@@ -1,7 +1,7 @@
 <div class="form-group">
   <label class="form-label">{{ label }}<span class="required" *ngIf="required">*</span></label>
   <div class="select-wrapper">
-    <select
+    <select [attr.aria-label]="label" [attr.aria-required]="required"
       class="form-select"
       [class.has-value]="value"
       [ngModel]="value"
