@@ -1,4 +1,4 @@
-# Rule Builder
+﻿# Rule Builder
 
 An Angular component for creating a list of rules, one rule at a time. Each rule needs a **Variation** and a **Source**. Rules are paginated, validated on save, persisted to `localStorage`, and emitted to a parent component.
 
@@ -7,7 +7,7 @@ Built with Angular 21 standalone components.
 ## Features
 
 - **One rule per page:** each rule is a card with its own page number, so long lists stay compact
-- **Add and remove rules:** the `+` button adds a rule and jumps to it, and the `×` button removes the current rule (the last remaining rule can't be removed)
+- **Add and remove rules:** the `+` button adds a rule and jumps to it, and the `Ã—` button removes the current rule (the last remaining rule can't be removed)
 - **Sliding pagination:** shows up to 5 page buttons at a time, keeps the active page in view, and has previous and next arrows
 - **Required-field validation:** saving checks every rule, jumps to the first incomplete one and shows a message such as `Rule - 3 is missing required fields.`
 - **Smart Save button:** disabled when the draft is identical to the last saved rules, which prevents redundant saves
@@ -128,33 +128,33 @@ sourceOptions    = ['Source 1', 'Source 2', 'Source 3'];
 
 ```text
 src/app/
-├── new-rules/
-│   ├── new-rules.ts        # Rule list logic, pagination, validation, persistence
-│   ├── new-rules.html      # Rule card, pagination and Save button
-│   ├── new-rules.css
-│   └── new-rules.spec.ts   # Unit tests
-├── select-field/
-│   ├── select-field.ts     # Reusable labelled select
-│   ├── select-field.html
-│   └── select-field.css
-├── app.ts                  # Root component
-└── app.html
+â”œâ”€â”€ new-rules/
+â”‚   â”œâ”€â”€ new-rules.ts        # Rule list logic, pagination, validation, persistence
+â”‚   â”œâ”€â”€ new-rules.html      # Rule card, pagination and Save button
+â”‚   â”œâ”€â”€ new-rules.css
+â”‚   â””â”€â”€ new-rules.spec.ts   # Unit tests
+â”œâ”€â”€ select-field/
+â”‚   â”œâ”€â”€ select-field.ts     # Reusable labelled select
+â”‚   â”œâ”€â”€ select-field.html
+â”‚   â””â”€â”€ select-field.css
+â”œâ”€â”€ app.ts                  # Root component
+â””â”€â”€ app.html
 ```
 
 ## Scripts
 
 | Command | Description |
 | --- | --- |
-| `ng serve` | Start the dev server |
-| `ng build` | Production build into `dist/` |
-| `ng test` | Run unit tests with Vitest |
+| `npm start` | Start the dev server |
+| `npm run build` | Production build into `dist/` |
+| `npm test` | Run unit tests with Vitest |
 
 ## Roadmap
 
 - [ ] Accept `variationOptions` and `sourceOptions` as inputs instead of hard-coding them
 - [ ] Per-field error messages next to the invalid select
 - [ ] Confirm before removing a rule
-- [ ] Unit tests for validation, pagination and persistence
+- [x] Unit tests for validation and persistence (pagination still to do)
 - [ ] Backend or API persistence
 
 ## License
