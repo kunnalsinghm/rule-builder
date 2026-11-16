@@ -1,0 +1,66 @@
+<div class="rules-page">
+
+  <div class="rules-wrapper">
+
+    <div class="rules-header">
+      <span class="rules-title">New Rules</span>
+      <button class="btn-add" (click)="addRule()">
+        <span class="material-symbols-outlined">add</span>
+      </button>
+    </div>
+
+    <div class="rule-card" *ngIf="currentRule">
+      <div class="rule-card-header">
+        <span class="rule-label">Rule - {{ currentRule.id }}</span>
+        <button class="btn-remove" (click)="removeRule(currentPage - 1)" [disabled]="draftRules.length === 1">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="rule-card-body">
+        <app-select-field
+          label="Variation"
+          [required]="true"
+          [options]="variationOptions"
+          [(value)]="currentRule.variation"
+          [name]="'variation-' + currentRule.id">
+        </app-select-field>
+
+        <app-select-field
+          label="Source"
+          [required]="true"
+          [options]="sourceOptions"
+          [(value)]="currentRule.source"
+          [name]="'source-' + currentRule.id">
+        </app-select-field>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn nav-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+
+      <div class="page-numbers">
+        <button
+          *ngFor="let page of visiblePages; let i = index"
+          class="page-btn"
+          [class.active]="page === currentPage"
+          [style.grid-column]="leftEmptySlots + i + 1"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      </div>
+
+      <button class="page-btn nav-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="validation-error" *ngIf="validationError">{{ validationError }}</div>
+
+  <button class="btn-save" (click)="saveRules()" [disabled]="isUnchanged">Save</button>
+
+</div>
