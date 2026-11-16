@@ -1,4 +1,4 @@
-﻿# Rule Builder
+# Rule Builder
 
 An Angular component for creating a list of rules, one rule at a time. Each rule needs a **Variation** and a **Source**. Rules are paginated, validated on save, persisted to `localStorage`, and emitted to a parent component.
 
